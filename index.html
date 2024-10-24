@@ -3,12 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css"> 
-        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="style.css">
+        <title>Tic-Tac-Toe</title>
     </head>
     <body>
         
-        
+        <!-- Game board section (contains the cells for Tic-Tac-Toe) -->
+        <div class="game-board">
+            <!-- Each cell represents a spot on the board, with data-index attributes for identification -->
+            <!-- data-index sets an identifier for that cell.  -->
+            <!-- Basically, it creates an index for each cell so i can access each cell individually in javaScript -->
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <!-- Button to reset the game -->
+        <button onclick="">Reset Game</button> <!-- Calls the resetGame function when clicked -->
+
         <script src="java.js"></script>
     </body>
 </html>
