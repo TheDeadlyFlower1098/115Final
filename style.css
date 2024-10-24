@@ -3,3 +3,16 @@
     padding: 0;
     box-sizing: border-box; /* ionclude padding and border in the element's total width and height */
 }
+body {
+    text-align: center; /* Center text alignment for the whole page */
+    background-color: #f0f0f0; /* Light gray background color */
+}
+
+h1 {
+    margin-top: 20px; /* Add space above the heading */
+}
+
+/* Scoreboard section */
+.scoreboard {
+    margin: 20px 0; /* Vertical space around the scoreboard */
+}
