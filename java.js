@@ -1,4 +1,3 @@
-
 // Initialize the game board with empty values for each cell
 let board = ['','','','','','','','',''];
 
