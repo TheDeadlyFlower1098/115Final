@@ -16,3 +16,41 @@ h1 {
 .scoreboard {
     margin: 20px 0; /* Vertical space around the scoreboard */
 }
+/* Scoreboard section */
+.scoreboard {
+    margin: 20px 0; /* Vertical space around the scoreboard */
+}
+
+/* Game board grid */
+.game-board {
+    display: grid; /* Use grid layout for the game board */
+    grid-template-columns: repeat(3, 100px); /* Create three columns, each 100px wide */
+    gap: 5px; /* Add a gap/space between the grid cells */
+    justify-content: center;
+    margin: 20px auto; /* Add space above and below the game board and center it */
+}
+
+/* Each cell in the game board */
+.cell {
+    width: 100px; /*make each cell a 100px X 100px square*/
+    height: 100px;
+    border: 2px solid #333;
+    font-size: 30px;
+    display: flex;
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Cell hover effect */
+.cell:hover {
+    background-color: #f9f9f9; /* change cell's background for contrast*/
+}
+
+/* Buttons */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
