@@ -1,5 +1,5 @@
 // Initialize the game board with empty values for each cell
-let board = ['','','','','','','','',''];
+let board = ['', '', '', '', '', '', '', '', ''];
 
 // Set the current player to 'X', representing the first player
 let currentPlayer = 'X';
@@ -28,8 +28,6 @@ let player2WinsDisplay = document.getElementById('player2Wins');
 let tiesDisplay = document.getElementById('ties');
 
 // Set up click event listeners for each cell
-/*onclick is an event listener that 'listens' for the user to click a cell. 
-When it is clicked it calls handleCellClick(), passing the clicked cell as the argument */
 for (let i = 0; i < cells.length; i++) {
     cells[i].onclick = function() {
         handleCellClick(this); // Call the function to handle the cell click
@@ -38,14 +36,7 @@ for (let i = 0; i < cells.length; i++) {
 
 // Handle a cell click event
 function handleCellClick(cell) {
-    // Find the index of the clicked cell in the board array
-    let index = -1;
-    for (let i = 0; i < cells.length; i++) {
-        if (cells[i] === cell) {
-            index = i;
-            break;
-        }
-    }
+    let index = Array.prototype.indexOf.call(cells, cell);
 
     // If the cell is already filled or the game is over, exit the function
     if (board[index] !== '' || gameOver) {
@@ -58,7 +49,6 @@ function handleCellClick(cell) {
 
     // Check if the current player has won the game
     if (checkWinner()) {
-        // Update the scoreboard for the winning player
         updateScoreboard(currentPlayer === 'X' ? 'Player 1' : 'Player 2');
     } 
     // If the board is full and there's no winner, it's a tie
@@ -75,13 +65,8 @@ function handleCellClick(cell) {
 
 // Check if there is a winning combination on the board
 function checkWinner() {
-    // Loop through all winning combinations
     for (let i = 0; i < winningCombinations.length; i++) {
-        let a = winningCombinations[i][0];
-        let b = winningCombinations[i][1];
-        let c = winningCombinations[i][2];
-
-        // If the cells in a winning combination are the same, declare a winner
+        let [a, b, c] = winningCombinations[i];
         if (board[a] !== '' && board[a] === board[b] && board[a] === board[c]) {
             gameOver = true; // Mark the game as over
             return true; // Return true to indicate a win
@@ -92,13 +77,7 @@ function checkWinner() {
 
 // Check if all cells on the board are filled
 function isBoardFull() {
-    // Loop through the board and check for any empty cells
-    for (let i = 0; i < board.length; i++) {
-        if (board[i] === '') {
-            return false; // Return false if there's an empty cell
-        }
-    }
-    return true; // Return true if all cells are filled
+    return board.every(cell => cell !== ''); // Return true if all cells are filled
 }
 
 // Update the scoreboard based on the winner
@@ -106,37 +85,19 @@ function updateScoreboard(winner) {
     if (winner === 'Player 1') {
         player1Wins++;
         player1WinsDisplay.textContent = player1Wins; // Update player 1's win count
-    } 
-    else {
+    } else {
         player2Wins++;
         player2WinsDisplay.textContent = player2Wins; // Update player 2's win count
     }
     gameOver = true; // Mark the game as over
 }
 
-// Check if there is a winning combination on the board
-function checkWinner() {
-    // Loop through all winning combinations
-    for (let i = 0; i < winningCombinations.length; i++) {
-        let a = winningCombinations[i][0];
-        let b = winningCombinations[i][1];
-        let c = winningCombinations[i][2];
-
-        // If the cells in a winning combination are the same, declare a winner
-        if (board[a] !== '' && board[a] === board[b] && board[a] === board[c]) {
-            gameOver = true; // Mark the game as over
-            return true; // Return true to indicate a win
-        }
-    }
-    return false; // Return false if no winning combination is found
-}
-
-// Check if all cells on the board are filled
-function isBoardFull() {
-    // Loop through the board and check for any empty cells
-    for (let i = 0; i < board.length; i++) {
-        if (board[i] === '') {
-            return false; // Return false if there's an empty cell
-        }
+// Reset the game
+function resetGame() {
+    board.fill(''); // Reset the board
+    gameOver = false; // Mark the game as ongoing
+    currentPlayer = 'X'; // Reset to Player 1
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].textContent = ''; // Clear the displayed symbols
     }
 }
